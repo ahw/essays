@@ -1,0 +1,34 @@
+@@@@<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>body{padding:10px;}</style>
+</head>
+<body>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+asciimath2jax: {
+delimiters: [['%%', '%%'], ['$$', '$$']]
+},
+CommonHTML: { linebreaks: { automatic: true } },
+"HTML-CSS": { linebreaks: { automatic: true } },
+SVG: { linebreaks: { automatic: true } }
+})
+</script>
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_CHTML"></script>
+
+HTML_GOES_HERE
+
+<script>
+if (document.documentElement.clientWidth < 400)  {
+Array.prototype.slice.call(template.content.querySelectorAll('img'))
+.forEach(function(img) {
+img.style.width = '100%';
+img.style.height = 'auto';
+img.parentElement.style.width = '100%';
+img.parentElement.style.height = 'auto';
+});
+}
+</script>
+</body>
+</html>@@@@
