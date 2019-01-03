@@ -41,7 +41,7 @@ function getTextContentFromHtmlString(html) {
 }
 
 function extractTemplateHtml(html) {
-    const textContent = getTextContentFromHtmlString(html);
+    const textContent = getTextContentFromHtmlString(html.replace(/\n/g, ' '));
     const matches = textContent.match(/@@@@(.+)@@@@/);
     if (matches && matches[1]) {
         return matches[1];
@@ -124,7 +124,7 @@ function putS3Object(key, body, callback, retryCount = 0) {
         Body: body,
         Bucket: 'brlknd',
         Key: key,
-        ContentType: 'text/html',
+        ContentType: 'text/html; charset=utf-8',
     };
 
     s3.putObject(params, function(error, data) {
