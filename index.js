@@ -41,7 +41,7 @@ function getTextContentFromHtmlString(html) {
 }
 
 function extractTemplateHtml(html) {
-    const textContent = getTextContentFromHtmlString(html.replace(/\n/g, ' '));
+    const textContent = getTextContentFromHtmlString(html.replace(/\u00A0/g, ' '));
     const matches = textContent.match(/@@@@(.+)@@@@/);
     if (matches && matches[1]) {
         return matches[1];
