@@ -155,7 +155,9 @@ parallel([
     }
 
     const [ { title, html, slug }, templateHtml ] = results;
-    const fullHtml = templateHtml.replace(/HTML_GOES_HERE/, html);
+    const fullHtml = templateHtml
+        .replace(/HTML_GOES_HERE/, html)
+        .replace(/TITLE_GOES_HERE/, title);
     const hash = computeHash(fullHtml).substr(0, 8);
     const key = `${slug}-${hash}.html`;
     putS3Object(key, fullHtml, function() {
