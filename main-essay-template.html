@@ -1,16 +1,18 @@
 @@@@<!doctype html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {
-                padding:10px;
-            }
-            @page {
-                margin: 1in;
-                margin-bottom: .25in
-            }
-        </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+padding:10px;
+max-width:900px;
+margin:auto;
+}
+@page {
+margin: 1in 1.25in;
+}
+       </style>
+<title>TITLE_GOES_HERE</title>
     </head>
 <body>
 <script type="text/x-mathjax-config">
@@ -29,7 +31,7 @@ HTML_GOES_HERE
 
 <script>
 if (document.documentElement.clientWidth < 400)  {
-Array.prototype.slice.call(template.content.querySelectorAll('img'))
+Array.prototype.slice.call(document.querySelectorAll('img'))
 .forEach(function(img) {
 img.style.width = '100%';
 img.style.height = 'auto';
