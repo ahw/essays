@@ -3,8 +3,16 @@ const cheerio = require('cheerio');
 const crypto = require('crypto');
 const AWS = require('aws-sdk');
 
+if (typeof process.argv[2] === 'undefined') {
+    console.log(`Usage:
+
+    AWS_SECRET_ACCESS_KEY=xxx AWS_ACCESS_KEY_ID=yyy node index.js https://docs.google.com/document/d/1KXG_8-GjD7uxICw_JPC-YOhYY65n_F0GDAHvIUhCoUc/edit
+`);
+    process.exit(1);
+}
 const exampleTemplateUrl = 'https://docs.google.com/document/d/e/2PACX-1vQA5iy-l8G6v90lncp-5ZE4ugE03oE3TvDJH44pDqnimm4wefn8aEaF5eCTxXV14b6yNmAknCYOxbka/pub';
-const exampleEssayUrl = 'https://docs.google.com/document/d/e/2PACX-1vQ2jncgUpg-CQ4DzKl9PgqNeU5E_ZfoxJugms8XMX71T8HZfZsZDIGX9q_Ie6g6CD-Z5HScxNnR5Blw/pub';
+let exampleEssayUrl = process.argv[2] || 'https://docs.google.com/document/d/e/2PACX-1vQ2jncgUpg-CQ4DzKl9PgqNeU5E_ZfoxJugms8XMX71T8HZfZsZDIGX9q_Ie6g6CD-Z5HScxNnR5Blw/pub';
+exampleEssayUrl = exampleEssayUrl.replace(/\/edit[^\/]*$/, '/pub');
 
 function get(url, callback, retryCount = 0) {
     console.log(`[get] > GET ${url}`);
